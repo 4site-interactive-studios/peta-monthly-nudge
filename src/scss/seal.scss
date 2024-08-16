@@ -1,0 +1,103 @@
+.peta-monthly-nudge .peta-4site-seal-container {
+  width: 76px;
+  height: 76px;
+  position: absolute;
+  z-index: 1;
+  top: -30px;
+  right: -30px;
+
+  .ring {
+    width: 76px;
+    height: 76px;
+    --char-count: 23;
+    --inner-angle: calc((360 / var(--char-count)) * 1deg);
+    --character-width: 1.2;
+    --radius: calc((var(--character-width) / sin(var(--inner-angle))) * -1ch);
+    --font-size: 0.6rem;
+    font-family: monospace;
+    text-transform: uppercase;
+    animation: rotation 6s infinite linear;
+    position: relative;
+    --webkit-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    color: $color-text;
+    &::after {
+      content: "";
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      border: 3px solid $color-text;
+      z-index: -1;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .ring {
+      animation: spin 18s infinite linear;
+    }
+    @keyframes spin {
+      to {
+        rotate: 360deg;
+      }
+    }
+  }
+
+  .char {
+    font-size: var(--font-size);
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* 	line-height: 1; */
+    transform: translate(-50%, -50%)
+      rotate(calc(var(--inner-angle) * var(--char-index)))
+      translateY(var(--radius));
+  }
+  @keyframes rotation {
+    to {
+      rotate: -360deg;
+    }
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: $color-yellow;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -2;
+  }
+  &::before {
+    content: "";
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M1.59287 0.412972C1.90484 0.403899 2.20634 0.516963 2.43037 0.729829C2.65092 0.955956 2.77096 1.26304 2.76398 1.58269L2.66767 8.8746L10.8613 0.680974C11.3254 0.235001 12.0519 0.227324 12.5077 0.663527C12.9579 1.11369 12.9495 1.85069 12.4895 2.31063L4.29802 10.5022L11.6067 10.424C12.2488 10.4156 12.7652 10.9307 12.7596 11.5742C12.768 12.2079 12.2634 12.7348 11.6339 12.7557L11.5809 12.7571L1.39117 12.7641C1.2467 12.7899 1.09874 12.7732 0.963339 12.7174C0.670211 12.5973 0.4385 12.3656 0.318457 12.0725C0.27728 11.928 0.255644 11.778 0.254248 11.6272L0.261926 1.43822C0.372198 0.803111 0.955661 0.353648 1.59496 0.412273L1.59287 0.412972Z" fill="%230D1738"/></svg>');
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    width: 16.778px;
+    height: 16.582px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  &:hover {
+    .ring {
+      animation-play-state: paused;
+    }
+  }
+  // Hide the seal on mobile (450px and below)
+  @media (max-width: 450px) {
+    display: none;
+  }
+}

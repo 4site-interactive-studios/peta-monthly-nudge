@@ -1,0 +1,265 @@
+@import "./scss/reset.scss";
+@import "./scss/variables.scss";
+@import "./scss/seal.scss";
+@import "./scss/balloon.scss";
+@import "./scss/loading.scss";
+
+// Fix the Parent On Mobile
+@media screen and (max-width: 470px) {
+  .en__component.en__component--column:has(.peta-monthly-nudge) {
+    padding: 0;
+    .en__component--codeblock h3,
+    .en__component--copyblock,
+    .en__component--formblock:not(.peta-monthly-nudge) {
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+  }
+}
+.peta-monthly-nudge {
+  font-family: "proxima-nova", sans-serif;
+  max-width: 390px;
+  position: relative;
+  margin: auto;
+  @media (max-width: 450px) {
+    max-width: 95%;
+    margin: auto;
+  }
+  .en__field--radio {
+    .en__field__item {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .en__field__element--radio {
+      align-items: center;
+      display: flex !important;
+      flex-wrap: wrap;
+      gap: 6px;
+      .en__field__input--radio {
+        clip-path: circle(0);
+        border: 0;
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        white-space: nowrap;
+        width: 1px;
+        // Default Labels
+        + .en__field__label {
+          position: relative;
+          margin: 0;
+          padding: 0 !important;
+          cursor: pointer;
+          border: none;
+          background: none;
+          background-color: $color-light-blue;
+          border-radius: 12px;
+          color: $color-text;
+          display: flex !important;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          font-size: 40px;
+          font-weight: 600;
+          line-height: 1;
+          text-align: center;
+          white-space: nowrap;
+          gap: 2px;
+          transition: background-color 0.1s, color 0.1s;
+          width: 100% !important;
+          height: 100%;
+          &:hover,
+          &.active {
+            background-color: $color-dark-blue;
+            color: white;
+            .ring {
+              transition: none;
+              animation-play-state: paused;
+              color: $color-text;
+            }
+          }
+          span {
+            &.currency-symbol {
+              font-size: 20px;
+              font-weight: 400;
+              margin-bottom: 10px;
+            }
+            &.frequency {
+              font-size: 18px;
+              font-weight: 400;
+              margin-top: 10px;
+            }
+          }
+        }
+        &:checked + .en__field__label {
+          cursor: pointer;
+          background-color: $color-dark-blue;
+          color: white;
+        }
+      }
+      // Other Input Field
+      .en__field__item--other {
+        position: relative;
+        &::before {
+          content: "$";
+          position: absolute;
+          left: 20px;
+          color: $color-text;
+          font-size: 18px;
+          font-weight: 400;
+          margin-right: 6px;
+          transition: 0.1s color;
+        }
+        &:has(input:focus),
+        &:has(input.en__field__input--active) {
+          &::before {
+            color: white;
+          }
+        }
+        input {
+          border: 2px solid transparent;
+          background-color: $color-light-blue;
+          border-radius: 12px;
+          font-size: 24px;
+          font-weight: 600;
+          height: 100% !important;
+          padding-left: 32px !important;
+          margin: 0;
+          width: 100%;
+          transition: 0.1s border-color, 0.1s background-color, 0.1s color;
+          &::placeholder {
+            color: rgba($color-text, 0.8);
+            font-weight: 400;
+          }
+          &:focus,
+          &.en__field__input--active {
+            background-color: $color-dark-blue;
+            border-color: $color-light-blue;
+            color: white;
+            outline: none;
+            &::placeholder {
+              color: rgba(white, 0.8);
+            }
+          }
+        }
+      }
+    }
+    // First Labels are hidden
+    & > .en__field__label {
+      clip-path: circle(0);
+      height: 1px;
+      overflow: hidden;
+      position: absolute !important;
+      width: 1px;
+    }
+    // Recurring Payment
+    &.en__field--recurrpay {
+      margin-bottom: 6px;
+      padding-bottom: 0 !important;
+      .en__field__item {
+        margin: 0;
+      }
+      .en__field__element--radio {
+        height: 95px;
+        gap: 6px;
+        flex-wrap: nowrap;
+        .en__field__item {
+          flex-basis: auto;
+          width: 161px;
+          @media (max-width: 450px) {
+            width: 100%;
+            flex-basis: 100%;
+          }
+          &:last-child {
+            flex-basis: 100%;
+            width: 100%;
+            .en__field__label {
+              max-width: 222px;
+              padding-left: 70px !important;
+            }
+          }
+        }
+        .en__field__input--radio {
+          + .en__field__label {
+            line-height: 26px;
+            height: 95px;
+            padding: 36px 40px !important;
+            font-size: 34px;
+            @media (max-width: 450px) {
+              padding: 36px 20px !important;
+            }
+          }
+          &:checked + .en__field__label {
+            cursor: pointer;
+            background-color: $color-dark-blue;
+            color: white;
+          }
+        }
+      }
+    }
+    // Amount Labels
+    &.en__field--withOther {
+      .en__field__element--radio {
+        gap: 6px;
+        .en__field__item {
+          min-width: 126px;
+          flex-basis: auto;
+          width: 32%;
+          height: 75px;
+          margin: 0;
+          @media (max-width: 450px) {
+            min-width: 32%;
+          }
+          &:has(input[type="radio"][value="other"]) {
+            display: none;
+          }
+          &:has(input[name="transaction.donationAmt.other"]) {
+            &:is(:nth-child(4)),
+            &:is(:nth-child(7)),
+            &:is(:nth-child(10)) {
+              flex-basis: 32%;
+            }
+            &:is(:nth-child(2)),
+            &:is(:nth-child(5)),
+            &:is(:nth-child(8)),
+            &:is(:nth-child(11)) {
+              flex-basis: 100%;
+            }
+            &:is(:nth-child(9)),
+            &:is(:nth-child(6)),
+            &:is(:nth-child(3)) {
+              flex-basis: 66%;
+            }
+          }
+        }
+      }
+    }
+  }
+  .en__field--question {
+    display: none;
+  }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+}
+
+#monthlyNudgeAnimation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  z-index: 0;
+}

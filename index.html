@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PETA Monthly Nudge</title>
+    <!-- Adding PETA Styles so we can FIGHT conflicts -->
+    <link
+      href="https://resources.peta.org/engaging-networks/pages/_shared/theme-donation-background-image/styles/en-page-custom-us.css"
+      rel="stylesheet"
+      type="text/css"
+      media="all"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@lottiefiles/lottie-player@2.0.4/dist/lottie-player.min.js"></script>
+    <!-- <link rel="stylesheet" href="./4site-peta-monthly-nudge.css" /> -->
+    <style>
+      /*
+ * The Typekit service used to deliver this font or fonts for use on websites
+ * is provided by Adobe and is subject to these Terms of Use
+ * http://www.adobe.com/products/eulas/tou_typekit. For font license
+ * information, see the list below.
+ *
+ * proxima-nova:
+ *   - http://typekit.com/eulas/00000000000000007735e603
+ *   - http://typekit.com/eulas/00000000000000007735e604
+ *   - http://typekit.com/eulas/00000000000000007735e60d
+ *   - http://typekit.com/eulas/00000000000000007735e619
+ *   - http://typekit.com/eulas/00000000000000007735e609
+ *   - http://typekit.com/eulas/00000000000000007735e616
+ *
+ * © 2009-2024 Adobe Systems Incorporated. All Rights Reserved.
+ */
+      /*{"last_published":"2022-11-17 19:11:31 UTC"}*/
+
+      @import url("https://p.typekit.net/p.css?s=1&k=aqy4kui&ht=tk&f=139.140.173.174.175.176&a=109985892&app=typekit&e=css");
+
+      @font-face {
+        font-family: "proxima-nova";
+        src: url("https://use.typekit.net/af/2555e1/00000000000000007735e603/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3")
+            format("woff2"),
+          url("https://use.typekit.net/af/2555e1/00000000000000007735e603/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3")
+            format("woff"),
+          url("https://use.typekit.net/af/2555e1/00000000000000007735e603/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3")
+            format("opentype");
+        font-display: auto;
+        font-style: normal;
+        font-weight: 700;
+        font-stretch: normal;
+      }
+
+      @font-face {
+        font-family: "proxima-nova";
+        src: url("https://use.typekit.net/af/4de20a/00000000000000007735e604/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3")
+            format("woff2"),
+          url("https://use.typekit.net/af/4de20a/00000000000000007735e604/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3")
+            format("woff"),
+          url("https://use.typekit.net/af/4de20a/00000000000000007735e604/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3")
+            format("opentype");
+        font-display: auto;
+        font-style: italic;
+        font-weight: 700;
+        font-stretch: normal;
+      }
+
+      @font-face {
+        font-family: "proxima-nova";
+        src: url("https://use.typekit.net/af/78aca8/00000000000000007735e60d/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3")
+            format("woff2"),
+          url("https://use.typekit.net/af/78aca8/00000000000000007735e60d/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3")
+            format("woff"),
+          url("https://use.typekit.net/af/78aca8/00000000000000007735e60d/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3")
+            format("opentype");
+        font-display: auto;
+        font-style: normal;
+        font-weight: 600;
+        font-stretch: normal;
+      }
+
+      @font-face {
+        font-family: "proxima-nova";
+        src: url("https://use.typekit.net/af/144da4/00000000000000007735e619/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i6&v=3")
+            format("woff2"),
+          url("https://use.typekit.net/af/144da4/00000000000000007735e619/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i6&v=3")
+            format("woff"),
+          url("https://use.typekit.net/af/144da4/00000000000000007735e619/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i6&v=3")
+            format("opentype");
+        font-display: auto;
+        font-style: italic;
+        font-weight: 600;
+        font-stretch: normal;
+      }
+
+      @font-face {
+        font-family: "proxima-nova";
+        src: url("https://use.typekit.net/af/efe4a5/00000000000000007735e609/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3")
+            format("woff2"),
+          url("https://use.typekit.net/af/efe4a5/00000000000000007735e609/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3")
+            format("woff"),
+          url("https://use.typekit.net/af/efe4a5/00000000000000007735e609/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3")
+            format("opentype");
+        font-display: auto;
+        font-style: normal;
+        font-weight: 400;
+        font-stretch: normal;
+      }
+
+      @font-face {
+        font-family: "proxima-nova";
+        src: url("https://use.typekit.net/af/3322cc/00000000000000007735e616/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3")
+            format("woff2"),
+          url("https://use.typekit.net/af/3322cc/00000000000000007735e616/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3")
+            format("woff"),
+          url("https://use.typekit.net/af/3322cc/00000000000000007735e616/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3")
+            format("opentype");
+        font-display: auto;
+        font-style: italic;
+        font-weight: 400;
+        font-stretch: normal;
+      }
+
+      .tk-proxima-nova {
+        font-family: "proxima-nova", sans-serif;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        font-size: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      class="en__component en__component--formblock peta-monthly-nudge loading"
+    >
+      <div
+        class="en__field en__field--radio en__field--249726 en__field--recurrpay en__mandatory"
+      >
+        <label for="en__field_transaction_recurrpay" class="en__field__label"
+          >Recurring Payment</label
+        >
+        <div class="en__field__element en__field__element--radio">
+          <div class="en__field__item">
+            <input
+              id="en__field_transaction_recurrpay0"
+              type="radio"
+              class="en__field__input en__field__input--radio"
+              value="N"
+              name="transaction.recurrpay"
+              checked
+            />
+            <label
+              for="en__field_transaction_recurrpay0"
+              class="en__field__label en__field__label--item"
+              >Give One-Time</label
+            >
+          </div>
+          <div class="en__field__item">
+            <input
+              id="en__field_transaction_recurrpay1"
+              type="radio"
+              class="en__field__input en__field__input--radio"
+              value="Y"
+              name="transaction.recurrpay"
+            />
+            <label
+              for="en__field_transaction_recurrpay1"
+              class="en__field__label en__field__label--item"
+            >
+              <span>Monthly</span></label
+            >
+          </div>
+        </div>
+      </div>
+      <div
+        class="en__field en__field--radio en__field--withOther en__field--249729 en__field--donationAmt en__mandatory"
+      >
+        <label class="en__field__label">Donation Amount</label>
+        <div class="en__field__element en__field__element--radio">
+          <div class="en__field__item">
+            <input
+              type="radio"
+              class="en__field__input en__field__input--radio"
+              value="25"
+              name="transaction.donationAmt"
+              id="en__field_transaction_donationAmt0"
+            />
+            <label
+              class="en__field__label en__field__label--item"
+              for="en__field_transaction_donationAmt0"
+              >$25</label
+            >
+          </div>
+          <div class="en__field__item">
+            <input
+              checked=""
+              type="radio"
+              class="en__field__input en__field__input--radio"
+              value="35"
+              name="transaction.donationAmt"
+              id="en__field_transaction_donationAmt1"
+            />
+            <label
+              class="en__field__label en__field__label--item"
+              for="en__field_transaction_donationAmt1"
+              >$35</label
+            >
+          </div>
+          <div class="en__field__item">
+            <input
+              type="radio"
+              class="en__field__input en__field__input--radio"
+              value="50"
+              name="transaction.donationAmt"
+              id="en__field_transaction_donationAmt2"
+            />
+            <label
+              class="en__field__label en__field__label--item"
+              for="en__field_transaction_donationAmt2"
+              >$50</label
+            >
+          </div>
+          <div class="en__field__item">
+            <input
+              type="radio"
+              class="en__field__input en__field__input--radio"
+              value="100"
+              name="transaction.donationAmt"
+              id="en__field_transaction_donationAmt3"
+            />
+            <label
+              class="en__field__label en__field__label--item"
+              for="en__field_transaction_donationAmt3"
+              >$100</label
+            >
+          </div>
+          <div class="en__field__item">
+            <input
+              type="radio"
+              class="en__field__input en__field__input--radio"
+              value="other"
+              name="transaction.donationAmt"
+              id="en__field_transaction_donationAmt4"
+            />
+            <label
+              class="en__field__label en__field__label--item"
+              for="en__field_transaction_donationAmt4"
+              >Other</label
+            >
+          </div>
+          <div
+            class="en__field__item en__field__item--other en__field__item--hidden"
+          >
+            <input
+              class="en__field__input en__field__input--other"
+              type="text"
+              name="transaction.donationAmt.other"
+              value=""
+              placeholder="Other"
+            />
+          </div>
+        </div>
+      </div>
+      <input
+        type="hidden"
+        class="en__field__input en__field__input--hidden"
+        name="transaction.recurrfreq"
+        value="MONTHLY"
+      />
+
+      <input
+        type="hidden"
+        class="en__field__input en__field__input--hidden"
+        name="transaction.recurrday"
+        value=""
+      />
+
+      <div
+        class="en__field en__field--text en__field--question en__field--191534 en__field--img-donor-type-hidden-field-important-eo-mara-"
+      >
+        <label
+          for="en__field_supporter_questions_191534"
+          class="en__field__label"
+          >IMG Donor Type</label
+        >
+        <div class="en__field__element en__field__element--text">
+          <input
+            id="en__field_supporter_questions_191534"
+            type="text"
+            class="en__field__input en__field__input--text"
+            name="supporter.questions.191534"
+            value=""
+          />
+        </div>
+      </div>
+      <div
+        class="en__field en__field--text en__field--question en__field--222378 en__field--img-gomonthly-lightbox-setting-hidden-field-important-mmeinhardt-"
+      >
+        <label
+          for="en__field_supporter_questions_222378"
+          class="en__field__label"
+          >IMG GoMonthly Lightbox</label
+        >
+        <div class="en__field__element en__field__element--text">
+          <input
+            id="en__field_supporter_questions_222378"
+            type="text"
+            class="en__field__input en__field__input--text"
+            name="supporter.questions.222378"
+            value=""
+          />
+        </div>
+      </div>
+      <div
+        class="en__field en__field--text en__field--question en__field--223994 en__field--img-skip-default-amount-on-postback-important-mmeinhardt-"
+      >
+        <label
+          for="en__field_supporter_questions_223994"
+          class="en__field__label"
+          >Skip setting default amount on postback by flagging when an amount is
+          set. Cleared if switched</label
+        >
+        <div class="en__field__element en__field__element--text">
+          <input
+            id="en__field_supporter_questions_223994"
+            type="text"
+            class="en__field__input en__field__input--text"
+            name="supporter.questions.223994"
+            value=""
+          />
+        </div>
+      </div>
+    </div>
+    <script type="module" src="./src/main.ts"></script>
+  </body>
+</html>
