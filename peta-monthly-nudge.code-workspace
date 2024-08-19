@@ -1,11 +1,11 @@
 {
   "folders": [
-	{
-		"path": "."
-	},
-	{
-		"path": "../engrid-scripts"
-	}
-],
+    {
+      "path": "."
+    },
+    {
+      "path": "../engrid-scripts"
+    }
+  ],
   "settings": {}
 }
