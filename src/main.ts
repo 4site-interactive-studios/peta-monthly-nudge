@@ -6,8 +6,6 @@ import { MonthlySeal } from "./lib/monthly-seal";
 import { MonthlyNudgeBalloon } from "./lib/monthly-nudge-balloon";
 import { AmountsCurrency } from "./lib/amounts-currency";
 
-// import "@lottiefiles/lottie-player";
-
 function run() {
   logger("4Site Init");
   new MonthlyNudgeBalloon();
@@ -63,47 +61,88 @@ function run() {
       } else {
         lottie.playSegments([0, 42], true);
       }
-      freqRadios.forEach((radio) => {
-        radio.addEventListener("change", (e) => {
-          const target = e.target as HTMLInputElement;
-          if (target.value === "Y") {
-            monthlyLabel.classList.add("active");
-            lottie.playSegments([101, 165], true);
-          } else {
-            lottie.setSpeed(1.3);
-            lottie.playSegments(
-              [
-                [166, 222],
-                [41, 42],
-              ],
-              false
-            );
-          }
-        });
-      });
 
-      if (monthlyLabel) {
-        monthlyLabel.addEventListener("mouseenter", () => {
-          isHovering = true;
-          if (!isMonthly()) lottie.playSegments([42, 100], true);
+      const isReduced =
+        window.matchMedia(`(prefers-reduced-motion: reduce)`) === true ||
+        window.matchMedia(`(prefers-reduced-motion: reduce)`).matches === true;
+
+      if (!!isReduced) {
+        // DON'T use an amination here!
+        freqRadios.forEach((radio) => {
+          radio.addEventListener("change", (e) => {
+            const target = e.target as HTMLInputElement;
+            if (target.value === "Y") {
+              monthlyLabel.classList.add("active");
+              lottie.playSegments([42, 43], true);
+            } else {
+              monthlyLabel.classList.remove("active");
+              lottie.playSegments([[41, 42]], false);
+            }
+          });
         });
-        monthlyLabel.addEventListener("mouseleave", () => {
-          isHovering = false;
-          if (!isMonthly()) lottie.playSegments([41, 42], true);
+        if (monthlyLabel) {
+          monthlyLabel.addEventListener("mouseenter", () => {
+            isHovering = true;
+            if (!isMonthly()) lottie.playSegments([42, 43], true);
+          });
+          monthlyLabel.addEventListener("mouseleave", () => {
+            isHovering = false;
+            if (!isMonthly()) lottie.playSegments([41, 42], true);
+          });
+          lottie.onEnterFrame = (e: any) => {
+            if (e.currentTime === 63) {
+              monthlyLabel.classList.add("active");
+            }
+            if (e.totalTime === 1) {
+              monthlyLabel.classList.remove("active");
+              lottie.setSpeed(1);
+            }
+          };
+        }
+      } else {
+        // DO use an animation here!
+        freqRadios.forEach((radio) => {
+          radio.addEventListener("change", (e) => {
+            const target = e.target as HTMLInputElement;
+            if (target.value === "Y") {
+              monthlyLabel.classList.add("active");
+              lottie.playSegments([101, 165], true);
+            } else {
+              lottie.setSpeed(1.3);
+              lottie.playSegments(
+                [
+                  [166, 222],
+                  [41, 42],
+                ],
+                false
+              );
+            }
+          });
         });
-        lottie.onEnterFrame = (e: any) => {
-          // console.log(e);
-          if (e.currentTime === 63) {
-            monthlyLabel.classList.add("active");
-          }
-          if (e.totalTime === 1) {
-            monthlyLabel.classList.remove("active");
-            lottie.setSpeed(1);
-          }
-        };
+
+        if (monthlyLabel) {
+          monthlyLabel.addEventListener("mouseenter", () => {
+            isHovering = true;
+            if (!isMonthly()) lottie.playSegments([42, 100], true);
+          });
+          monthlyLabel.addEventListener("mouseleave", () => {
+            isHovering = false;
+            if (!isMonthly()) lottie.playSegments([41, 42], true);
+          });
+          lottie.onEnterFrame = (e: any) => {
+            // console.log(e);
+            if (e.currentTime === 63) {
+              monthlyLabel.classList.add("active");
+            }
+            if (e.totalTime === 1) {
+              monthlyLabel.classList.remove("active");
+              lottie.setSpeed(1);
+            }
+          };
+        }
+        // Clean Paws Every 5 seconds
+        setInterval(cleanPaws, 5000);
       }
-      // Clean Paws Every 5 seconds
-      setInterval(cleanPaws, 5000);
     });
   }
   new MonthlySeal();

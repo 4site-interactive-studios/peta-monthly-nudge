@@ -39,6 +39,18 @@ export class AmountsCurrency {
     );
     if (freqRadios.length > 0) {
       freqRadios.forEach((radio) => {
+        const label = radio.nextElementSibling as HTMLElement;
+        if (!label) return;
+        label.setAttribute("aria-label", label.innerText);
+        label.setAttribute("tabindex", "0");
+
+        label.addEventListener("keypress", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            const radioInput = radio as HTMLInputElement;
+            radioInput.click();
+          }
+        });
+
         radio.addEventListener("change", () => {
           setTimeout(() => {
             this.updateCurrency();
@@ -116,6 +128,18 @@ export class AmountsCurrency {
     }
     if (amountButtons.length > 0) {
       amountButtons.forEach((button) => {
+        const label = button.nextElementSibling as HTMLElement;
+        if (!label) return;
+        label.setAttribute("aria-label", label.innerText);
+        label.setAttribute("tabindex", "0");
+        // Select amount on enter key or space key
+        label.addEventListener("keypress", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            const radioInput = button as HTMLInputElement;
+            radioInput.click();
+          }
+        });
+
         button.addEventListener("change", (e) => {
           const target = e.target as HTMLInputElement;
           if (parseInt(target.value) > 0) {
@@ -132,6 +156,8 @@ export class AmountsCurrency {
       if (node.classList.contains("en__field__item--other")) return;
       const label = node.querySelector("label");
       if (!label) return;
+      label.setAttribute("aria-label", label.innerText);
+      label.setAttribute("tabindex", "0");
       const amountString = label.innerText.trim();
       if (amountString.substring(0, 1) === "$") {
         const currency = amountString.substring(0, 1);

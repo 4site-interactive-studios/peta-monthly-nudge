@@ -1,3 +1,9 @@
+@keyframes rotation {
+  to {
+    rotate: -360deg;
+  }
+}
+
 .peta-monthly-nudge .peta-4site-seal-container {
   width: 76px;
   height: 76px;
@@ -16,7 +22,6 @@
     --font-size: 0.6rem;
     font-family: monospace;
     text-transform: uppercase;
-    animation: rotation 6s infinite linear;
     position: relative;
     --webkit-user-select: none;
     user-select: none;
@@ -34,16 +39,8 @@
       border: 3px solid $color-text;
       z-index: -1;
     }
-  }
-
-  @media (prefers-reduced-motion: no-preference) {
-    .ring {
-      animation: spin 18s infinite linear;
-    }
-    @keyframes spin {
-      to {
-        rotate: 360deg;
-      }
+    @media (prefers-reduced-motion: no-preference) {
+      animation: rotation 18s infinite linear;
     }
   }
 
@@ -58,11 +55,7 @@
       rotate(calc(var(--inner-angle) * var(--char-index)))
       translateY(var(--radius));
   }
-  @keyframes rotation {
-    to {
-      rotate: -360deg;
-    }
-  }
+
   &::after {
     content: "";
     position: absolute;

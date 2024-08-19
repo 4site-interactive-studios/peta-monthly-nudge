@@ -82,6 +82,9 @@
               color: $color-text;
             }
           }
+          &:focus-visible {
+            outline: 2px dashed $color-dark-blue;
+          }
           span {
             &.currency-symbol {
               font-size: 20px;
