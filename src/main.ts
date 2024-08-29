@@ -48,7 +48,7 @@ function run() {
   if (player && freqRadios.length && monthlyLabel) {
     player.addEventListener("load", () => {
       logger("Lottie Player Loaded");
-      const container = document.querySelector(".peta-monthly-nudge ");
+      const container = document.querySelector(".peta-monthly-nudge");
       if (container) container.classList.add("loaded");
       const lottie = (player as any).getLottie();
       let isHovering = false;
@@ -77,6 +77,7 @@ function run() {
             } else {
               monthlyLabel.classList.remove("active");
               lottie.playSegments([[41, 42]], false);
+              removeMonthlyLabelFromAmounts();
             }
           });
         });
@@ -116,6 +117,7 @@ function run() {
                 ],
                 false
               );
+              removeMonthlyLabelFromAmounts();
             }
           });
         });
@@ -144,8 +146,23 @@ function run() {
         setInterval(cleanPaws, 5000);
       }
     });
+
+    function removeMonthlyLabelFromAmounts() {
+      const frequencyLabels = document.querySelectorAll(
+        "label.en__field__label span.frequency"
+      );
+      frequencyLabels.forEach((freq) => {
+        // Delete the span
+        freq.remove();
+      });
+    }
   }
   new MonthlySeal();
+  // Remove the loading curtain after half second
+  setTimeout(() => {
+    const container = document.querySelector(".peta-monthly-nudge");
+    if (container) container.classList.add("loaded");
+  }, 500);
 }
 // Make sure we only run after the page load, checking if the page is fully loaded
 if (document.readyState === "complete") {

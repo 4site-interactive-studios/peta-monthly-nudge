@@ -26,6 +26,12 @@
     margin: auto;
   }
   .en__field--radio {
+    &.en__hidden {
+      display: none;
+      & + .peta-monthly-nudge-balloon-content {
+        display: none;
+      }
+    }
     .en__field__item {
       height: 100%;
       display: flex;
@@ -84,6 +90,9 @@
           }
           &:focus-visible {
             outline: 2px dashed $color-dark-blue;
+          }
+          &.en__field__item--large-number {
+            font-size: 32px;
           }
           span {
             &.currency-symbol {

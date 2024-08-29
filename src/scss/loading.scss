@@ -27,8 +27,10 @@
 }
 
 .peta-monthly-nudge {
-  transition: 0.1s opacity ease-in-out;
+  transition: 0.1s opacity ease-in-out, 0.1s min-height ease-in-out;
   &.loaded {
+    min-height: 0 !important;
+    overflow: visible !important;
     .peta-4site-seal-container {
       animation: open 0.5s forwards;
     }
@@ -41,6 +43,7 @@
   }
   &.loading {
     min-height: 340px;
+    overflow: hidden;
     &::before {
       content: "";
       display: block;

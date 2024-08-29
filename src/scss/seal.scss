@@ -15,7 +15,7 @@
   .ring {
     width: 76px;
     height: 76px;
-    --char-count: 23;
+    --char-count: 24;
     --inner-angle: calc((360 / var(--char-count)) * 1deg);
     --character-width: 1.2;
     --radius: calc((var(--character-width) / sin(var(--inner-angle))) * -1ch);

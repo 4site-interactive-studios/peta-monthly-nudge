@@ -48,7 +48,10 @@ export class MonthlySeal {
     <span aria-hidden="true" class="char" style="--char-index: 19;">a</span>
     <span aria-hidden="true" class="char" style="--char-index: 20;">l</span>
     <span aria-hidden="true" class="char" style="--char-index: 21;">s</span>
-    <span class="sr-only">Help Even More Animals</span>
+    <span aria-hidden="true" class="char" style="--char-index: 22;">!</span>
+    <span aria-hidden="true" class="char" style="--char-index: 23;"> </span>
+
+    <span class="sr-only">Help Even More Animals!</span>
     </div>
     `;
     sealContainer.addEventListener("click", () => {

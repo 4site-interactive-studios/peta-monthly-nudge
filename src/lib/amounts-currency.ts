@@ -168,6 +168,9 @@ export class AmountsCurrency {
           newAmountHTML += `<span class="frequency">${frequency}</span>`;
         }
         label.innerHTML = newAmountHTML;
+        if (amount > 999 && frequency) {
+          label.classList.add("en__field__item--large-number");
+        }
       }
     });
   }
