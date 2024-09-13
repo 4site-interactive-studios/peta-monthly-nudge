@@ -86,13 +86,13 @@ export class AmountsCurrency {
               : cleanAmount.toString();
         }
       });
-      // On focus, save the current amount
+      // On focus, save the current amount & select the other amount radio
       otherAmountField.addEventListener("focus", () => {
         const checkedAmount = document.querySelector(
           "input[name='transaction.donationAmt']:checked"
         ) as HTMLInputElement;
         const otherChecked = document.querySelector(
-          "input[name='transaction.donationAmt'][value='other']"
+          "input[name='transaction.donationAmt'][value=''], input[name='transaction.donationAmt'][value='other']"
         ) as HTMLInputElement;
         if (
           checkedAmount &&
@@ -100,6 +100,9 @@ export class AmountsCurrency {
           otherChecked
         ) {
           this.oldAmount = checkedAmount.value;
+          otherChecked.checked = true;
+          otherChecked.dispatchEvent(new Event("change"));
+        } else if (otherChecked) {
           otherChecked.checked = true;
           otherChecked.dispatchEvent(new Event("change"));
         }

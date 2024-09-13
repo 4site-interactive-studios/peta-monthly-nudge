@@ -226,6 +226,7 @@
           @media (max-width: 450px) {
             min-width: 32%;
           }
+          &:has(input[type="radio"][value=""]),
           &:has(input[type="radio"][value="other"]) {
             display: none;
           }

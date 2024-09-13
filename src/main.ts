@@ -71,6 +71,7 @@ function run() {
         freqRadios.forEach((radio) => {
           radio.addEventListener("change", (e) => {
             const target = e.target as HTMLInputElement;
+            deactiveOtherInput();
             if (target.value === "Y") {
               monthlyLabel.classList.add("active");
               lottie.playSegments([42, 43], true);
@@ -105,6 +106,7 @@ function run() {
         freqRadios.forEach((radio) => {
           radio.addEventListener("change", (e) => {
             const target = e.target as HTMLInputElement;
+            deactiveOtherInput();
             if (target.value === "Y") {
               monthlyLabel.classList.add("active");
               lottie.playSegments([101, 165], true);
@@ -155,6 +157,23 @@ function run() {
         // Delete the span
         freq.remove();
       });
+    }
+    // If the user has selected a radio button, we need to make sure the other input is not active
+    // This function was created to fix a bug when you have an other amount inserted, change the frequency, and EN checks an amount radio
+    // The other amount input was still active
+    function deactiveOtherInput() {
+      window.setTimeout(() => {
+        const checkedRadio = document.querySelector(
+          "input[name='transaction.donationAmt']:checked"
+        ) as HTMLInputElement;
+        if (!checkedRadio) return;
+        const otherInput = document.querySelector(
+          "input[name='transaction.donationAmt.other']"
+        ) as HTMLInputElement;
+        if (otherInput && parseInt(checkedRadio.value) > 0) {
+          otherInput.classList.remove("en__field__input--active");
+        }
+      }, 150);
     }
   }
   new MonthlySeal();
