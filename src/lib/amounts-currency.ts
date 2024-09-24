@@ -33,6 +33,37 @@ export class AmountsCurrency {
     const config = { childList: true };
     observer.observe(targetNode, config);
   }
+  addAmountsEventListeners() {
+    const amountButtons = document.querySelectorAll(
+      "input[name='transaction.donationAmt']"
+    );
+    const otherAmountField = document.querySelector(
+      "[name='transaction.donationAmt.other'"
+    ) as HTMLInputElement;
+    if (amountButtons.length > 0) {
+      amountButtons.forEach((button) => {
+        const label = button.nextElementSibling as HTMLElement;
+        if (!label) return;
+        label.setAttribute("aria-label", label.innerText);
+        label.setAttribute("tabindex", "0");
+        // Select amount on enter key or space key
+        label.addEventListener("keypress", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            const radioInput = button as HTMLInputElement;
+            radioInput.click();
+          }
+        });
+
+        button.addEventListener("change", (e) => {
+          const target = e.target as HTMLInputElement;
+          if (parseInt(target.value) > 0) {
+            otherAmountField.value = "";
+            otherAmountField.classList.remove("en__field__input--active");
+          }
+        });
+      });
+    }
+  }
   addEventListeners() {
     const freqRadios = document.querySelectorAll(
       "input[name='transaction.recurrpay']"
@@ -54,6 +85,7 @@ export class AmountsCurrency {
         radio.addEventListener("change", () => {
           setTimeout(() => {
             this.updateCurrency();
+            this.addAmountsEventListeners();
             this.isUpdating = false;
           }, 10);
         });
@@ -62,9 +94,6 @@ export class AmountsCurrency {
     const otherAmountField = document.querySelector(
       "[name='transaction.donationAmt.other'"
     ) as HTMLInputElement;
-    const amountButtons = document.querySelectorAll(
-      "input[name='transaction.donationAmt']"
-    );
     if (otherAmountField) {
       otherAmountField.setAttribute("inputmode", "decimal");
       // ADD THE MISSING LABEL FOR IMPROVED ACCESSABILITY
@@ -129,29 +158,7 @@ export class AmountsCurrency {
         }
       });
     }
-    if (amountButtons.length > 0) {
-      amountButtons.forEach((button) => {
-        const label = button.nextElementSibling as HTMLElement;
-        if (!label) return;
-        label.setAttribute("aria-label", label.innerText);
-        label.setAttribute("tabindex", "0");
-        // Select amount on enter key or space key
-        label.addEventListener("keypress", (e) => {
-          if (e.key === "Enter" || e.key === " ") {
-            const radioInput = button as HTMLInputElement;
-            radioInput.click();
-          }
-        });
-
-        button.addEventListener("change", (e) => {
-          const target = e.target as HTMLInputElement;
-          if (parseInt(target.value) > 0) {
-            otherAmountField.value = "";
-            otherAmountField.classList.remove("en__field__input--active");
-          }
-        });
-      });
-    }
+    this.addAmountsEventListeners();
     this.addMutationObserver();
   }
   updateCurrency() {
