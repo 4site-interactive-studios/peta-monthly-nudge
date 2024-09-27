@@ -33,7 +33,7 @@ function run() {
     monthlyLabel.innerHTML = `
     <lottie-player
       id="monthlyNudgeAnimation"
-      src="https://s3.amazonaws.com/cdn.4sitestudios.com/peta-monthly-animation.json"
+      src="https://resources.peta.org/engaging-networks/pages/4site/monthly-nudge/monthly-animation.json"
       background="transparent"
       speed="1"
       style="width: 222px; height: 95px"
