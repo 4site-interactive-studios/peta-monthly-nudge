@@ -4,42 +4,39 @@
   }
   p.peta-monthly-nudge-balloon-content {
     position: relative;
-    padding: 16px 20px;
+    padding: 15px 35px 20px 10px;
     margin-bottom: 6px;
     width: 100%;
-    font-family: proxima-nova, Arial, Helvetica, sans-serif;
-    font-size: 16px;
+    font-family: "Kalam";
+    font-size: 17px;
+    font-weight: normal;
+    font-stretch: normal;
     font-style: normal;
-    font-weight: 400;
-    line-height: 22px; /* 137.5% */
-    z-index: 1;
-    color: $color-text;
+    line-height: 1.3;
+    letter-spacing: -0.35px;
+    // word-spacing: -1px;
+    text-align: left;
+    max-width: 500px;
+    color: $color-dark-blue;
+    @media (max-width: 450px) {
+      font-size: 15px;
+      padding: 15px 20px 20px 10px;
+    }
     &::before {
       content: "";
-      width: 35.355px;
-      height: 35.355px;
-      border: 6px solid white;
-      box-sizing: content-box;
-
-      transform: rotate(-45deg);
-      flex-shrink: 0;
-      background-color: $color-yellow;
       position: absolute;
-      top: -10px;
-      right: 93px;
-      z-index: -2;
-    }
-    &::after {
-      content: "";
-      width: 100%;
-      height: 100%;
-      background-color: $color-yellow;
-      border-radius: 12px;
-      box-sizing: content-box;
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: -1;
+      right: 5px;
+      top: 35%;
+      transform: translateY(-50%) scaleX(-1);
+      width: 25px;
+      height: 45px;
+      background-image: url('data:image/svg+xml;utf8,<svg width="23" height="46" viewBox="0 0 23 46" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.561 8.588c-1.522.606-3.043 1.25-4.607 1.8-.705.262-1.47.468-2.223.5-1.024.043-1.99-.865-2.168-1.863-.127-.71.386-1.855 1.025-1.843 2.517.03 4.265-1.65 6.293-2.664 1.724-.866 3.3-2.016 5.025-2.882 1.25-.633 2.58-1.23 3.942-1.5 3.243-.64 5.756 1.595 5.31 4.807-.625 4.457-1.464 8.884-3.026 13.149-.313.826-.723 1.655-1.275 2.337-.846 1.041-2.82.563-3.07-.761-.202-1.114-.135-2.297-.107-3.46.041-1.781.179-3.567.271-5.506-.598.045-1.047-.052-1.252.13-3.405 3.22-6.23 6.88-8.021 11.231-1.51 3.643-2.069 7.401-.821 11.296 1.76 5.479 6.279 8.965 12.05 9.109.64.012 1.256-.053 1.72-.073.808.818.505 1.43-.042 1.782-1.224.787-2.587 1.038-4.064.887-6.882-.774-12.35-6.097-13.396-13.019C.53 28.007.985 24.1 2.586 20.316c1.32-3.112 3.118-5.916 5.173-8.576.696-.92 1.433-1.802 2.15-2.702-.102-.132-.225-.281-.348-.45z" fill="%232375c9"/></svg>');
+      background-repeat: no-repeat;
+      background-size: contain;
+      @media (max-width: 450px) {
+        width: 20px;
+        height: 35px;
+      }
     }
   }
 }

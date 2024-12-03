@@ -1,8 +1,8 @@
 @import "./scss/reset.scss";
 @import "./scss/variables.scss";
-@import "./scss/seal.scss";
+// @import "./scss/seal.scss";
 @import "./scss/balloon.scss";
-@import "./scss/loading.scss";
+// @import "./scss/loading.scss";
 
 // Fix the Parent On Mobile
 @media screen and (max-width: 470px) {
@@ -191,7 +191,6 @@
             width: 100%;
             .en__field__label {
               max-width: 222px;
-              padding-left: 70px !important;
             }
           }
         }
