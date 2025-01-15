@@ -21,7 +21,9 @@ function run() {
   );
   // Hardcode Give Once Label
   if (giveOnceLabel) {
-    giveOnceLabel.innerHTML = "Once";
+    giveOnceLabel.innerHTML = `
+    <span>Once</span>
+    `;
   }
   // Hardcode Give Monthly Label
   if (monthlyLabel) {
@@ -73,15 +75,11 @@ function run() {
     }
   }
   // new MonthlySeal();
-  // Remove the loading curtain after half second
-  setTimeout(() => {
-    const container = document.querySelector(".peta-monthly-nudge");
-    if (container) container.classList.add("loaded");
-  }, 500);
 }
 // Make sure we only run after the page load, checking if the page is fully loaded
-if (document.readyState === "complete") {
-  run();
-} else {
-  window.addEventListener("load", run);
-}
+// if (document.readyState === "complete") {
+//   run();
+// } else {
+//   window.addEventListener("load", run);
+// }
+run();

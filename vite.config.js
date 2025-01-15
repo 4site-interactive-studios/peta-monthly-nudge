@@ -1,6 +1,7 @@
 // vite.config.js
 import { resolve } from "path";
 import { defineConfig } from "vite";
+import basicSsl from "@vitejs/plugin-basic-ssl";
 // import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
 
 export default defineConfig({
@@ -37,4 +38,5 @@ export default defineConfig({
       },
     },
   },
+  plugins: [basicSsl()],
 });

@@ -19,18 +19,36 @@ export class AmountsCurrency {
     if (!targetNode) return;
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
-        if (mutation.type === "childList") {
+        if (
+          mutation.type === "childList" &&
+          mutation.addedNodes.length === 1 &&
+          mutation.addedNodes[0].nodeName === "DIV" &&
+          (mutation.addedNodes[0] as HTMLElement).classList.contains(
+            "en__field__item"
+          ) &&
+          !this.isUpdating
+        ) {
           // Update the currency only once, after the mutation is complete
-          if (this.isUpdating) return;
           this.isUpdating = true;
-          setTimeout(() => {
+          window.setTimeout(() => {
             this.updateCurrency();
             this.isUpdating = false;
-          }, 20);
+          }, 10);
+        } else if (
+          mutation.target.nodeName === "LABEL" &&
+          mutation.addedNodes.length === 0 &&
+          !this.isUpdating
+        ) {
+          // Update the currency only once, after the mutation is complete
+          this.isUpdating = true;
+          window.setTimeout(() => {
+            this.updateCurrency();
+            this.isUpdating = false;
+          }, 10);
         }
       });
     });
-    const config = { childList: true };
+    const config = { childList: true, subtree: true };
     observer.observe(targetNode, config);
   }
   addAmountsEventListeners() {
@@ -83,11 +101,10 @@ export class AmountsCurrency {
         });
 
         radio.addEventListener("change", () => {
-          setTimeout(() => {
-            this.updateCurrency();
-            this.addAmountsEventListeners();
-            this.isUpdating = false;
-          }, 10);
+          console.log(`freqRadios Change`, radio);
+          this.updateCurrency();
+          this.addAmountsEventListeners();
+          this.isUpdating = false;
         });
       });
     }
