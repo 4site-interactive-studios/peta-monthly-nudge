@@ -23,6 +23,10 @@ export class MonthlyNudgeBalloon {
     } else {
       monthlyNudgeContainer.classList.add("peta-monthly-nudge-balloon-content");
     }
+    const recurrParent = recurrDiv.parentElement as HTMLElement;
+    if (recurrParent && recurrParent.classList.contains("arrow-left")) {
+      monthlyNudgeContainer.classList.add("arrow-left");
+    }
     // Append the monthly nudge AFTER the recurrDiv
     recurrDiv.insertAdjacentElement("afterend", monthlyNudgeContainer);
   }
